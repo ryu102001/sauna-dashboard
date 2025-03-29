@@ -1,7 +1,8 @@
 import React from 'react';
 import ChartCard from '../ChartCard';
 
-const LTVTab = () => {
+// LTVデータを受け取るように変更
+const LTVTab = ({ ltvData }) => {
   return (
     <div className="grid grid-cols-1 gap-6">
       <ChartCard
@@ -10,6 +11,7 @@ const LTVTab = () => {
       >
         <div className="p-4 text-center text-gray-500">
           LTVデータの詳細分析が表示されます
+          {/* ここにltvDataを使った表示を追加できます */}
         </div>
       </ChartCard>
     </div>

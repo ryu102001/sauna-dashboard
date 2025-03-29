@@ -6,7 +6,19 @@ import MembersTab from './tabs/MembersTab';
 import ReservationsTab from './tabs/ReservationsTab';
 import LTVTab from './tabs/LTVTab';
 import CompetitorsTab from './tabs/CompetitorsTab';
-import { COLORS, months } from '../data/saunaData';
+import {
+  COLORS,
+  months,
+  // 以下を追加
+  lessonData,
+  memberData,
+  ltvData,
+  competitorData,
+  lessonDataByMonth,
+  memberDataByMonth,
+  ltvDataByMonth,
+  competitorDataByMonth
+} from '../data/saunaData';
 
 const Dashboard = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -23,6 +35,17 @@ const Dashboard = () => {
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+  // 追加: 選択された月のデータを取得する関数
+  const getFilteredData = (dataByMonth, defaultData) => {
+    return dataByMonth[selectedMonth] || defaultData;
+  };
+
+  // 追加: フィルタリングされたデータを取得
+  const filteredLessonData = getFilteredData(lessonDataByMonth, lessonData);
+  const filteredMemberData = getFilteredData(memberDataByMonth, memberData);
+  const filteredLtvData = getFilteredData(ltvDataByMonth, ltvData);
+  const filteredCompetitorData = getFilteredData(competitorDataByMonth, competitorData);
 
   return (
     <div className={`flex min-h-screen transition-colors duration-300 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
@@ -130,13 +153,24 @@ const Dashboard = () => {
           </div>
         </header>
 
-        {/* タブコンテンツ */}
+        {/* タブコンテンツ - ここを修正 */}
         <div className="space-y-6">
-          {activeTab === 'overview' && <OverviewTab />}
-          {activeTab === 'members' && <MembersTab />}
-          {activeTab === 'reservations' && <ReservationsTab />}
-          {activeTab === 'ltv' && <LTVTab />}
-          {activeTab === 'competitors' && <CompetitorsTab />}
+          {activeTab === 'overview' && <OverviewTab
+            lessonData={filteredLessonData}
+            memberData={filteredMemberData}
+          />}
+          {activeTab === 'members' && <MembersTab
+            memberData={filteredMemberData}
+          />}
+          {activeTab === 'reservations' && <ReservationsTab
+            lessonData={filteredLessonData}
+          />}
+          {activeTab === 'ltv' && <LTVTab
+            ltvData={filteredLtvData}
+          />}
+          {activeTab === 'competitors' && <CompetitorsTab
+            competitorData={filteredCompetitorData}
+          />}
         </div>
       </main>
     </div>

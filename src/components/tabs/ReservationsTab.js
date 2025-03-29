@@ -1,7 +1,8 @@
 import React from 'react';
 import ChartCard from '../ChartCard';
 
-const ReservationsTab = () => {
+// レッスンデータを受け取るように変更
+const ReservationsTab = ({ lessonData }) => {
   return (
     <div className="grid grid-cols-1 gap-6">
       <ChartCard
@@ -10,6 +11,7 @@ const ReservationsTab = () => {
       >
         <div className="p-4 text-center text-gray-500">
           予約データの詳細分析が表示されます
+          {/* ここにlessonDataを使った表示を追加できます */}
         </div>
       </ChartCard>
     </div>

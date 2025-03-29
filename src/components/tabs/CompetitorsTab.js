@@ -1,9 +1,11 @@
 import React from 'react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import ChartCard from '../ChartCard';
-import { competitorData, COLORS } from '../../data/saunaData';
+import { COLORS } from '../../data/saunaData';
+// competitorDataのimportを削除
 
-const CompetitorsTab = () => {
+// 競合データを受け取るように変更
+const CompetitorsTab = ({ competitorData }) => {
   return (
     <div className="grid grid-cols-1 gap-6">
       <ChartCard

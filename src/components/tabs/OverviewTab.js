@@ -4,9 +4,11 @@ import { Users, UserPlus, Percent, Zap } from 'lucide-react';
 import Card from '../Card';
 import ChartCard from '../ChartCard';
 import CustomTooltip from '../CustomTooltip';
-import { lessonData, memberData, COLORS, CHART_COLORS } from '../../data/saunaData';
+import { COLORS, CHART_COLORS } from '../../data/saunaData';
+// lessonDataとmemberDataのimportを削除
 
-const OverviewTab = () => {
+// props を受け取るように変更
+const OverviewTab = ({ lessonData, memberData }) => {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">

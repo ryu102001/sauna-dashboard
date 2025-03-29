@@ -1,9 +1,11 @@
 import React from 'react';
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import ChartCard from '../ChartCard';
-import { memberData, CHART_COLORS } from '../../data/saunaData';
+import { CHART_COLORS } from '../../data/saunaData';
+// memberDataのimportを削除
 
-const MembersTab = () => {
+// props を受け取るように変更
+const MembersTab = ({ memberData }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <ChartCard
